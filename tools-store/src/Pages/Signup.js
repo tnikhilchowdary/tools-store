@@ -1,10 +1,22 @@
 import react from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const navigate = useNavigate();
+
+    const handleSignup = (e) => {
+        e.preventDefault();
+        localStorage.setItem("name", name);
+        localStorage.setItem("email", email);
+        localStorage.setItem("password", password);
+        alert("Signup Successfully!");
+        navigate("/login");
+    }
 
     const nameHandleChange = (e) => {
         setName(e.target.value);
@@ -22,7 +34,7 @@ const Signup = () => {
     return(
         <div>
             <h1>Welcome to Signup Page</h1>
-            <form>
+            <form onSubmit={handleSignup}>
                 <label>
                     Name
                     <input type="text" 
@@ -41,6 +53,9 @@ const Signup = () => {
                     onChange={passwordHandleChange}
                     />
                 </label>
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
             </form>
         </div>
     )
