@@ -1,19 +1,38 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import Logo from "../assets/tools-logo.jpg"; // Make sure this path is correct
+import { NavLink, Link } from "react-router-dom";
+import { FaSearch, FaShoppingCart } from "react-icons/fa";
+import Logo from "../assets/tools-logo.jpg";
 import "./Navbar.css";
 
 const Navbar = () => {
   return (
-    <div className="navbar-container">
-      <div className="navbar-left">
-        <img src={Logo} alt="Tool Store Logo" className="logo-img" />
+    <header className="navbar">
+      <div className="navbar-top">
+        <Link to="/" className="logo">
+          <img src={Logo} alt="Tools Store Logo" className="logo-img" />
+        </Link>
+        <div className="auth-buttons">
+          <NavLink to="/signup" className="register-link">Register</NavLink>
+          <NavLink to="/login">
+            <button className="sign-in-btn">Sign In</button>
+          </NavLink>
+        </div>
       </div>
-      <div className="navbar-right">
-        <NavLink to="/signup" className="nav-link">Register</NavLink>
-        <NavLink to="/login" className="sign-in-btn">Sign In</NavLink>
+
+      <div className="navbar-bottom">
+        <button className="dropdown-btn">All Products ▾</button>
+        <input
+          type="text"
+          className="search-input"
+          placeholder="Enter keyword, item, model or part #"
+        />
+        <button className="search-btn"><FaSearch /></button>
+        <div className="right-section">
+          <NavLink to="/account">Account ▾</NavLink>
+          <Link to="/cart"><FaShoppingCart className="cart-icon" /></Link>
+        </div>
       </div>
-    </div>
+    </header>
   );
 };
 

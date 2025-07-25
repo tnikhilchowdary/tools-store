@@ -1,9 +1,21 @@
 import react from "react";
+import ProductDisplay from "../components/ProductDisplay";
+
+const toolCategory = [
+    "Power Tools",
+    "Automotive Tools",
+    "Electrical Tools"
+];
 
 const Home = () => {
     return(
         <div>
-            <h1>Welcome to the Home Page</h1>
+            {toolCategory.map((toolName, index) => (
+                <ProductDisplay 
+                key={index} 
+                name={toolName}
+                />
+            ))}
         </div>
     )
 }
